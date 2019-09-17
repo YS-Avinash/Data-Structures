@@ -4,11 +4,11 @@ class node{
 	  int data;
 	  node *left,*right;
 };
-class Bst{
+class BinarySearchTree{
 	node *root,*p;
 	public:
-	void Begin();
-	Bst();
+	void design();
+	BinarySearchTree();
 	void Leaf(node*,node*);
     void Inorder(node*);
     void Preorder(node*);
@@ -18,10 +18,10 @@ class Bst{
     void delet(node*,node*,int);
     node* find(node*,node*);
 };
-Bst::Bst(){
-	root=NULL;
+BinarySearchTree::BinarySearchTree(){
+	root=NULL;//Empty Tree
 }
-void Bst::Begin(){
+void BinarySearchTree::design(){
 	int x;
 	do{
 	cout<<"\n**OPERATIONS**\n";
@@ -47,7 +47,7 @@ void Bst::Begin(){
 	   }
 	}while(x!=4);
 }
-void Bst::Leaf(node *x,node *y){
+void BinarySearchTree::Leaf(node *x,node *y){
 	if(root==NULL)
 		root=y;
 	else{
@@ -72,7 +72,7 @@ void Bst::Leaf(node *x,node *y){
 	}
 	}
 }
-void Bst::Disp(int x){
+void BinarySearchTree::Disp(int x){
 	if(x==1)
 		Inorder(root);
 	else if(x==2)
@@ -80,7 +80,7 @@ void Bst::Disp(int x){
 	else
 	    Postorder(root);
 }
-void Bst::search(node *x,node *y,int k,int n){
+void BinarySearchTree::search(node *x,node *y,int k,int n){
    int m;
 	m=x->data;
 	if(x==NULL)
@@ -102,7 +102,7 @@ void Bst::search(node *x,node *y,int k,int n){
 		search(x,y,k,n);
 	}
 }
-void Bst::delet(node *x,node *y,int n){
+void BinarySearchTree::delet(node *x,node *y,int n){
     node *k;
     if(x->left==NULL && x->right==NULL){
     	if(n==0){
@@ -138,28 +138,28 @@ void Bst::delet(node *x,node *y,int n){
     delete(k);
     }
 }
-void Bst::Inorder(node *x){
+void BinarySearchTree::Inorder(node *x){
 	if(x!=NULL){
 		Inorder(x->left);
 		cout<<x->data<<" ";
 		Inorder(x->right);
 	}
 }
-void Bst::Preorder(node *x){
+void BinarySearchTree::Preorder(node *x){
 	if(x!=NULL){
 		cout<<x->data<<" ";
 		Preorder(x->left);
 		Preorder(x->right);
 	}
 }
-void Bst::Postorder(node *x){
+void BinarySearchTree::Postorder(node *x){
 	if(x!=NULL){
 		Postorder(x->left);
 		Postorder(x->right);
 		cout<<x->data<<" ";
 	}
 }
-node* Bst::find(node *x,node *y){
+node* BinarySearchTree::find(node *x,node *y){
     node *p=x,*q;
     if(x->left!=NULL){
         while(p->left!=NULL)
@@ -180,6 +180,6 @@ node* Bst::find(node *x,node *y){
     }
 }
 int main(){
-	Bst b;
-    b.Begin();
+	BinarySearchTree tree;
+        tree.design();
 }
